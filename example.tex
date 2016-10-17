@@ -1,0 +1,161 @@
+\documentclass[aspectratio=1610]{beamer}
+% \documentclass{article}
+% \usepackage{beamerarticle}
+\usetheme[navigation,footline=fullsinglelight,pagenumbers=full,transition=push,headline=light]{TUD}
+
+% for handout
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=2mm]
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[all=normal,floats,wordspacing,leading,charwidths,tracking]{savetrees}
+\usepackage{tudcolors}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xparse}
+\usepackage{csquotes}
+\usepackage{scalerel}
+\usepackage{stmaryrd}
+
+\usepackage{csvsimple}
+\usepackage{filecontents}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{rotating}
+
+\usepackage{xspace}
+% \usepackage{bm}
+% \def\bm{}
+
+\let\Bbb\undefined
+
+\def\Alphabet{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\def\alphabet{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
+\newcommand{\mydef}[2]{\expandafter#1\expandafter{\csname#2\endcsname}}
+\newcommand{\myforcsvlist}[2]{\expandafter\forcsvlist\expandafter#1\expandafter{#2}}
+
+\newcommand{\defmc}[1]{\mydef{\newcommand}{#1mc}{\ensuremath{\mathcal{#1}}\xspace}}
+\newcommand{\defmf}[1]{\mydef{\newcommand}{#1mf}{\ensuremath{\mathfrak{#1}}\xspace}}
+\newcommand{\defbb}[1]{\mydef{\newcommand}{#1bb}{\ensuremath{\mathbb{#1}}\xspace}}
+\newcommand{\defbf}[1]{\mydef{\newcommand}{#1bf}{\ensuremath{\mathbf{#1}}\xspace}}
+\newcommand{\deful}[1]{\mydef{\newcommand}{#1ul}{\ensuremath{\underline{#1}}\xspace}}
+
+\myforcsvlist{\defmc}{\Alphabet}
+\myforcsvlist{\defmf}{\Alphabet}
+\myforcsvlist{\defbb}{\Alphabet}
+\myforcsvlist{\defbf}{\Alphabet}
+\myforcsvlist{\defbf}{\alphabet}
+\myforcsvlist{\deful}{\Alphabet}
+
+\let\Xmc\undefined
+
+\title
+  [TUD Beamer Theme]
+  {A theme for the LaTeX beamer class in corporate design of Technische Universität Dresden}
+\subtitle{Some Exhilarating New Results Showing that the Earth is not a Ball}
+\author{Francesco Kriegel}
+\institute[TU Dresden]{Technische Universität Dresden}
+\date[FCA4AI\,@\,ECAI 2016]{FCA4AI\,@\,ECAI, The Hague, 30 August 2016}
+
+\begin{document}
+
+\maketitle
+
+\section{Section 1}
+
+\begin{frame}{A}{Subtitle}
+  \begin{enumerate}
+    \item
+      foo
+    \item
+      bar
+    \item
+      baz
+  \end{enumerate}
+  some comments
+  \begin{itemize}
+    \item
+      an item
+    \item
+      another item
+    \item
+      yet another item
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  A frame without a title.  Does it work?
+\end{frame}
+
+\begin{frame}{Just a title, but no subtitle}
+  
+  Some introductory text.
+  
+  \pause
+  
+  \begin{definition}
+    This is an exemplary definition.
+  \end{definition}
+  
+  \pause
+  
+  Some concluding remarks.
+  
+\end{frame}
+
+\begin{frame}{C}{Subtitle}
+  bla bla bla
+  \begin{equation*}
+    \int_{X}f\;d\mu\quad0123456789
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{D}{Subtitle}
+  bla bla bla
+  
+%   \begin{posterbox}{An exemplary posterbox}
+%     foo bar baz
+%   \end{posterbox}
+  
+  \begin{definition}[Comparison with amsthm]
+    foo bar baz
+  \end{definition}
+\end{frame}
+
+\section{Section 2}
+
+\begin{frame}{E}{Subtitle}
+  bla bla bla
+\end{frame}
+
+\begin{frame}{F}{Subtitle}
+  bla bla bla
+\end{frame}
+
+\begin{frame}{G}{Subtitle}
+  bla bla bla
+\end{frame}
+
+\section{Section 3}
+
+\begin{frame}{H}{Subtitle}
+  bla bla bla
+\end{frame}
+
+\begin{frame}{I}{Subtitle}
+  bla bla bla
+\end{frame}
+ 
+\end{document}

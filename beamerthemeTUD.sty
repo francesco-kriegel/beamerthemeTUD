@@ -1,0 +1,117 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+% \ProvidesPackageRCS $Header: /Users/joseph/Documents/LaTeX/beamer/base/themes/theme/beamerthemeBerlin.sty,v d02a7cf4d8ae 2010/06/17 09:11:41 rivanvx $
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeTUD}
+
+\RequirePackage{etoolbox}
+
+% \DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\beamer@compresstrue
+
+\newif\if@navigation\@navigationfalse
+\DeclareOptionBeamer{navigation}{\@navigationtrue}
+
+\def\beamer@theme@transition@none{}
+\def\beamer@theme@transition@fade{\transfade[duration=0.1]}
+\def\beamer@theme@transition@push{\transpush[duration=0.1]}
+
+\let\deftrans\undefined
+\DeclareOptionBeamer{transition}
+  {\expandafter\let\expandafter\deftrans\csname beamer@theme@transition@#1\endcsname}
+
+\DeclareOptionBeamer{pagenumbers}{\PassOptionsToPackage{pagenumbers=#1}{beamerouterthemeTUDminiframes}}
+\DeclareOptionBeamer{boldtext}{\PassOptionsToPackage{boldtext}{beamerfontthemeTUD}}
+\DeclareOptionBeamer{sansmath}{\PassOptionsToPackage{sansmath}{beamerfontthemeTUD}}
+\DeclareOptionBeamer{headline}{\PassOptionsToPackage{headline=#1}{beamercolorthemeTUD}}
+\DeclareOptionBeamer{footline}{\PassOptionsToPackage{footline=#1}{beamerouterthemeTUDminiframes}}
+\DeclareOptionBeamer{hideminiframes}{\PassOptionsToPackage{hideminiframes}{beamerouterthemeTUDminiframes}}
+
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+% \useoutertheme{miniframes}
+\useoutertheme[subsection=false]{TUDminiframes}
+\useoutertheme{TUDtitlepage}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+\usecolortheme{TUD}
+\useinnertheme{rectangles}
+\usefonttheme{TUD}
+
+\setbeamerfont{block title}{size={}}
+
+\beamersetleftmargin{5mm}
+\beamersetrightmargin{5mm}
+
+\if@navigation
+\else
+  \setbeamertemplate{navigation symbols}{}
+\fi
+
+\AtBeginEnvironment{frame}{
+  \deftrans
+}
+
+% \AtBeginEnvironment{frame}{\transfade[duration=0.1]}
+
+\makeatletter
+
+  \newcommand*\@einrichtung{Institute of Theoretical Computer Science\ }
+  \newcommand*\@fachrichtung{}
+  \newcommand*\@institut{}
+  \newcommand*\@professur{Chair of Automata Theory}
+  
+  \def\logo@front{logo_weiss}
+  \def\logo@default{logo_blau}
+  \ifx\pdfoutput\undefined%
+  \else%
+    \ifx\pdfoutput\relax%
+    \else%
+      \ifcase\pdfoutput%
+      \else%
+        \def\logo@front{TU_Logo_SW}%
+        \def\logo@default{TU_Logo_SW}%
+      \fi%
+    \fi%
+  \fi
+  \def\conceptlogo@front{dresden_concept}
+
+\makeatother
+
+% \newenvironment{myframe}[2]
+% {
+%   \subsection{#1}
+%   \begin{frame}
+%     \frametitle{#1}
+%     \framesubtitle{#2}
+%     \transfade[duration=0.1]
+% %     \transpush<1>[duration=0.5,direction=180]
+% %     \transfade<2->[duration=0.25]
+%       % using this command always creates a second overlay for each frame
+% }{
+%   \end{frame}
+% }
+% \newenvironment{myframe*}[2]
+% {
+%   \subsection{#1}
+%   \begin{frame}
+%     \frametitle{#1}
+%     \framesubtitle{#2}
+%     \transpush<1>[duration=0.5,direction=180]
+%       % using this command always creates a second overlay for each frame
+% }{
+%   \end{frame}
+% }
+
+\mode
+<all>

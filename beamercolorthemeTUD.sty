@@ -1,0 +1,47 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeTUD}
+
+\RequirePackage{tudcolors}
+
+\definecolor{hausfarbe}{cmyk}{1,.7,.1,.5}
+\definecolor{auszeichnung1}{cmyk}{1,.5,0,0}
+\definecolor{auszeichnung2}{cmyk}{.8,.9,0,0}
+\definecolor{auszeichnung3}{cmyk}{.5,1,0,0}
+\definecolor{auszeichnung4}{cmyk}{1,0,.9,.2}
+\definecolor{auszeichnung5}{cmyk}{.65,0,1,0}
+\definecolor{ausnahmefarbe}{cmyk}{0,.6,1,0}
+\definecolor{white}{gray}{1.00}
+\definecolor{black}{gray}{0.00}
+\definecolor{skyblue}{rgb}{0.80, 0.80, 1.00}
+\definecolor{blue}{rgb}{0.20, 0.20, 0.80}
+\definecolor{darkblue}{rgb}{0.04, 0.16, 0.32}
+% \definecolor{extradarkblue}{rgb}{0.00, 0.15, 0.36}
+\definecolor{extradarkblue}{cmyk}{1.00, 0.70, 0.10, 0.50}
+\definecolor{turquoise}{rgb}{0.00, 0.80, 0.60}
+\definecolor{gray}{gray}{0.59}
+\definecolor{darkgray}{gray}{0.50}
+
+\def\beamer@theme@headline@light{
+  \colorlet{framesubtitle}{black}
+\setbeamercolor{frametitle}{fg=frametitle,bg=white}
+}
+\def\beamer@theme@headline@dark{
+  \colorlet{framesubtitle}{white}
+\setbeamercolor{frametitle}{fg=frametitle}
+}
+
+\colorlet{text}{extradarkblue}
+\colorlet{frametitle}{gray}
+\colorlet{accent}{turquoise}
+\colorlet{alink}{skyblue}
+\colorlet{vlink}{lightgray}
+\colorlet{alert}{ausnahmefarbe}
+
+\setbeamercolor{normal text}{fg=text}
+\setbeamercolor{structure}{fg=text}
+\setbeamercolor{alerted text}{fg=ausnahmefarbe}
+\setbeamercolor{framesubtitle}{fg=framesubtitle}
+
+\DeclareOptionBeamer{headline}{\csname beamer@theme@headline@#1\endcsname}
+
+\ProcessOptionsBeamer

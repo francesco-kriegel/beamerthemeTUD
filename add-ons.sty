@@ -1,0 +1,78 @@
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{patterns}
+\usepackage{pgffor}
+\usepackage[framemethod=tikz]{mdframed}
+
+\newenvironment{posterbox}[1]
+{
+  \begin{mdframed}
+  [
+    frametitle={\color{white}\vphantom{Ag}#1},
+    frametitlebackgroundcolor=HKS41K100,
+    frametitleaboveskip=2pt,
+    frametitlebelowskip=1pt,
+    backgroundcolor=HKS92K100!2,
+    shadowcolor=HKS92K20,
+    linewidth=0,
+    shadowsize=4pt,
+    shadow=true
+  ]
+  \begin{minipage}{\textwidth}
+}
+{
+  \end{minipage}
+  \end{mdframed}
+}
+
+\DeclareDocumentCommand{\sws}{s m}{
+  \begin{sideways}
+    \IfBooleanTF{#1}{$#2$}{#2}\;
+  \end{sideways}
+}
+
+\newcommand{\addoverlay}[3]{
+  \begin{tikzpicture}[overlay]
+    \node[at=(current page.center), xshift=#1-124mm, yshift=-#2+3mm]{#3};
+  \end{tikzpicture}
+}
+
+\newcommand{\first}[2]{#1}
+\newcommand{\second}[2]{#2}
+\newcounter{tikzlabel}
+\setcounter{tikzlabel}{0}
+\tikzset{tikzlabel/.style={inner sep=0pt,outer sep=2pt}}
+\DeclareDocumentCommand{\tikzlabel}{s m >{\SplitArgument{1}{,}}O{0mm,5mm} m O{bend left=10} d<>}{
+% D<>{+-}
+  \pgfmathsetmacro\x{\first#3}
+  \pgfmathsetmacro\y{\second#3}
+  \pgfmathsetmacro\i{\thetikzlabel}
+  \begin{tikzpicture}[remember picture,baseline=(current bounding box.base)]
+    \node (symbol\i) [tikzlabel,anchor=base] {\IfBooleanTF{#1}{$#2$}{#2}};
+  \end{tikzpicture}
+  \IfNoValueTF{#6}{
+    \begin{tikzpicture}[remember picture,baseline=(current bounding box.base),overlay]
+        \node (label\i)
+          [above=0mm of symbol\i.base,right=0mm of symbol\i.base,xshift=\x,yshift=\y,
+            tikzlabel,anchor=base west] {#4};
+      \path[<-] (symbol\i) edge[#5] (label\i.base west);
+    \end{tikzpicture}
+  }{
+    \uncover<#6>{
+      \begin{tikzpicture}[remember picture,baseline=(current bounding box.base),overlay]
+        \node (label\i)
+          [above=0mm of symbol\i.base,right=0mm of symbol\i.base,xshift=\x,yshift=\y,
+            tikzlabel,anchor=base west] {#4};
+        \path[<-] (symbol\i) edge[#5] (label\i.base west);
+      \end{tikzpicture}
+    }
+  }
+  \stepcounter{tikzlabel}
+}
