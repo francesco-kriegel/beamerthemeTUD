@@ -1,0 +1,68 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemeTUD}
+
+\newif\if@boldtext\@boldtextfalse
+\DeclareOptionBeamer{boldtext}{\@boldtexttrue}
+
+\newif\if@sansmath\@sansmathfalse
+\DeclareOptionBeamer{sansmath}{\@sansmathtrue}
+
+\ProcessOptionsBeamer
+
+\RequirePackage{bm}
+% \RequirePackage{mathpazo}
+\RequirePackage[serifmath]{tudscrfonts}
+
+% \renewcommand*\encodingdefault{OT1}
+% \renewcommand*\familydefault{aun}
+% \renewcommand*\bfseries{\fontseries{b}\selectfont}
+% \if@boldtext\renewcommand*\seriesdefault{m}\else\renewcommand*\seriesdefault{l}\fi
+% \renewcommand*\shapedefault{n}
+% \renewcommand*\sfdefault{aun}
+% % \renewcommand*{\sffamily}{\not@math@alphabet\sffamily\mathsf\fontfamily{aun}\selectfont}
+% % \renewcommand*{\ttfamily}{\fontfamily{\ttdefault}\fontseries{\mddefault}\selectfont}
+% \renewcommand*\ttfamily{\not@math@alphabet\ttfamily\mathtt\fontfamily\ttdefault\fontseries\mddefault\selectfont}
+% % \DeclareRobustCommand\dindefault{din}
+% \newcommand*{\dinfamily}{\fontencoding{OT1}\fontfamily{din}\fontseries{b}\selectfont}
+% % \DeclareRobustCommand\dinfamily{\not@math@alphabet\sffamily\mathsf\fontfamily\dindefault\selectfont}
+% 
+% \if@sansmath
+%   \DeclareSymbolFont{aunLetters}{T1}{aun}{l}{sl}
+%   \SetSymbolFont{aunLetters}{bold}{T1}{aun}{b}{sl}
+%   \DeclareSymbolFont{aunOperators}{T1}{aun}{l}{n}
+%   \SetSymbolFont{aunOperators}{bold}{T1}{aun}{b}{n}
+%   
+%   \def\Alphabet{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+%   \def\alphabet{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
+%   \def\digits{0,1,2,3,4,5,6,7,8,9}
+%   \providecommand{\myforcsvlist}[2]{\expandafter\forcsvlist\expandafter#1\expandafter{#2}}
+%   \newcommand{\declareletters}[1]{\DeclareMathSymbol{#1}{\mathalpha}{aunLetters}{`#1}}
+%   \newcommand{\declaredigits}[1]{\DeclareMathSymbol{#1}{\mathalpha}{aunOperators}{"3#1}}
+%   \myforcsvlist{\declareletters}{\Alphabet}
+%   \myforcsvlist{\declareletters}{\alphabet}
+%   \myforcsvlist{\declaredigits}{\digits}
+%   \let\myforcsvlist\undefined
+%   
+%   \DeclareMathSymbol{,}{\mathpunct}{aunLetters}{`,}
+%   \DeclareMathSymbol{.}{\mathord}{aunLetters}{`.}
+%   \DeclareMathSymbol{/}{\mathord}{aunLetters}{`/}
+%   
+%   \DeclareSymbolFontAlphabet{\mathsf}{aunOperators}
+%   \DeclareSymbolFontAlphabet{\mathnormal}{aunLetters}
+%   \DeclareMathAlphabet\mathbf{T1}{aun}{b}{n}
+%   \SetMathAlphabet\mathbf{bold}{T1}{aun}{b}{n}
+%   \DeclareMathAlphabet\mathit{T1}{aun}{l}{sl}
+%   \SetMathAlphabet\mathit{bold}{T1}{aun}{l}{sl}
+%   
+%   \let\operator@font\sf
+% \fi
+
+\def\dinfamily{\dinbn}%
+
+\usefonttheme[onlymath]{serif}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries,family=\dinfamily}
+\setbeamerfont{subtitle}{series=\bfseries,family=\sffamily}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{framesubtitle}{family=\sffamily,series=\mdseries}
