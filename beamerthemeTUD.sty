@@ -12,16 +12,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemeTUD}
 
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[english]{babel}
 \RequirePackage{etoolbox}
 
 % \DeclareOptionBeamer{compress}{\beamer@compresstrue}
 \beamer@compresstrue
 
-\newif\if@navigation
-\@navigationfalse
+\newif\if@navigation\@navigationfalse
 \DeclareOptionBeamer{navigation}{\@navigationtrue}
 
 \def\beamer@theme@transition@none{}
@@ -42,34 +38,13 @@
   {\expandafter\let\expandafter\deftrans\csname beamer@theme@transition@#1\endcsname}
 
 \DeclareOptionBeamer{pagenumbers}{\PassOptionsToPackage{pagenumbers=#1}{beamerouterthemeTUDminiframes}}
-% \DeclareOptionBeamer{boldtext}{\PassOptionsToPackage{boldtext}{beamerfontthemeTUD}}
+\DeclareOptionBeamer{boldtext}{\PassOptionsToPackage{boldtext}{beamerfontthemeTUD}}
 \DeclareOptionBeamer{sansmath}{\PassOptionsToPackage{sansmath}{beamerfontthemeTUD}}
-\DeclareOptionBeamer{mathpazo}{\PassOptionsToPackage{mathpazo}{beamerfontthemeTUD}}
 \DeclareOptionBeamer{headline}{\PassOptionsToPackage{headline=#1}{beamercolorthemeTUD}}
 \DeclareOptionBeamer{footline}{\PassOptionsToPackage{footline=#1}{beamerouterthemeTUDminiframes}}
 \DeclareOptionBeamer{hideminiframes}{\PassOptionsToPackage{hideminiframes}{beamerouterthemeTUDminiframes}}
 
-\newif\if@german
-\@germanfalse
-\DeclareOptionBeamer{german}{\@germantrue}
-
 \ProcessOptionsBeamer
-
-\makeatletter
-  \if@german
-    \PassOptionsToPackage{ngerman}{babel}
-    \newcommand*\@einrichtung{Fakultät Informatik}
-    \newcommand*\@fachrichtung{}
-    \newcommand*\@institut{Institut für Theoretische Informatik}
-    \newcommand*\@professur{Lehrstuhl für Automatentheorie}
-  \else
-    \PassOptionsToPackage{english}{babel}
-    \newcommand*\@einrichtung{Faculty of Computer Science}
-    \newcommand*\@fachrichtung{}
-    \newcommand*\@institut{Institute of Theoretical Computer Science}
-    \newcommand*\@professur{Chair of Automata Theory}
-  \fi
-\makeatother
 
 \mode<presentation>
 
@@ -92,10 +67,17 @@
   \setbeamertemplate{navigation symbols}{}
 \fi
 
+
 %%% http://tex.stackexchange.com/questions/122953/global-transition-effect-in-beamer
 \addtobeamertemplate{background canvas}{}{\deftrans}
 
 \makeatletter
+
+  \newcommand*\@einrichtung{Faculty of Computer Science\ }
+  \newcommand*\@fachrichtung{}
+  \newcommand*\@institut{Institute of Theoretical Computer Science}
+  \newcommand*\@professur{Chair of Automata Theory}
+  
   \def\logo@front{logo_weiss}
   \def\logo@default{logo_blau}
   \ifx\pdfoutput\undefined%
@@ -110,6 +92,7 @@
     \fi%
   \fi
   \def\conceptlogo@front{dresden_concept}
+
 \makeatother
 
 \mode
